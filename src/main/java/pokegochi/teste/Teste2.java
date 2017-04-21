@@ -29,7 +29,7 @@ public class Teste2 {
 		
 		//treinando
 		Sumo sumo = new Sumo();
-		sumo.iniciarTreino(j2);
+		sumo.iniciarTreino(j2, 4);
 		
 		Ninjutsu ninjutsu = new Ninjutsu();
 		ninjutsu.iniciarTreino(j1);

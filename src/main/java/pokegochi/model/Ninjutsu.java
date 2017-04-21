@@ -15,5 +15,10 @@ public class Ninjutsu implements Treinar{
 		System.out.println("          treino de -> " + this.nomeTreino + "   -> fim do treino");
 	}
 
+	public void iniciarTreino(Jogador2 jogador, int horas) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

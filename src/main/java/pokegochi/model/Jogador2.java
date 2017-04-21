@@ -1,5 +1,7 @@
 package pokegochi.model;
 
+import java.sql.Timestamp;
+
 public class Jogador2 implements Runnable {
 
 	private String nome = "";
@@ -9,6 +11,7 @@ public class Jogador2 implements Runnable {
 	private Pokegochi pokegochi;
 	private Jogador2 inimigo;
 	private boolean podeAtacar = false;
+	private boolean acabouTreino = false;
 	
 
 	public void setPokegochi(Pokegochi pokegochi) {
@@ -67,7 +70,8 @@ public class Jogador2 implements Runnable {
 					}
 					this.inimigo.receberDano(getDano());
 					System.out.println(" ");
-					System.out.println("Ataque: " + this.nome + " - HP: " + getVida());
+					System.out.println("Ataque: " + this.nome + " - HP: " + getVida() + "  " 
+							+ new Timestamp(System.currentTimeMillis()));
 					System.out.println("HP inimigo " + this.inimigo.getNome() + " : " + this.inimigo.getVida());
 					System.out.println(" ");
 				}
@@ -90,6 +94,14 @@ public class Jogador2 implements Runnable {
 		}else{
 			System.out.println("nao pode se alimentar mais");
 		}
+	}
+
+	public void setAcabouTreino(boolean b) {
+		this.acabouTreino = b;
+	}
+
+	public boolean getAcabouTreino() {
+		return this.acabouTreino;
 	}
 
 }
