@@ -9,16 +9,16 @@ public class MonstroGordo implements Pokegochi{
 	
 	
 	public int getVida() {
-		return vida;
+		return this.vida;
 	}
 	public int getDano() {
-		return dano;
+		return this.dano;
 	}
 	public int getVelocidadeAtaque() {
-		return velocidadeAtaque;
+		return this.velocidadeAtaque;
 	}
 	public int getDefesa() {
-		return defesa;
+		return this.defesa;
 	}
 	public void receberDano(int dano) {
 		this.vida -= dano;

@@ -43,30 +43,6 @@ public class Jogador2 implements Runnable {
 		return pokegochi;
 	}
 
-	public void run() {
-
-		
-		try {
-			
-			if(this.podeAtacar){
-				while(getVida() >= 0){
-					this.inimigo.receberDano(getDano());
-					System.out.println("hp: " + this.nome + " - " + getVida() + " - " + " - hp inimigo: " + this.inimigo.getNome() + " - " + this.inimigo.getVida());
-						Thread.sleep(getVelocidadeAtaque());
-					if(this.inimigo.getVida() < 0){
-						this.podeAtacar = false;
-						break;
-					}
-				}
-			}
-		
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-	}
 
 	private void receberDano(int dano) {
 		this.pokegochi.receberDano(dano);
@@ -75,6 +51,33 @@ public class Jogador2 implements Runnable {
 	public void setTarget(Jogador2 inimigo) {
 		this.inimigo = inimigo;
 		this.podeAtacar = true;
+	}
+
+	public void run() {
+		try {
+			
+			if(this.podeAtacar){
+				while(this.inimigo.getVida() >= 0){
+					Thread.sleep(getVelocidadeAtaque());
+					//se ainda pode continuar atacando
+					if(getVida() < 0){
+						this.podeAtacar = false;
+						System.out.println(this.nome + " PERDEU a batalha");
+						break;
+					}
+					this.inimigo.receberDano(getDano());
+					System.out.println(" ");
+					System.out.println("Ataque: " + this.nome + " - HP: " + getVida());
+					System.out.println("HP inimigo " + this.inimigo.getNome() + " : " + this.inimigo.getVida());
+					System.out.println(" ");
+				}
+				if(getVida() >= 0)
+					System.out.println(this.nome + " GANHOU a batalha");
+			}
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void alimenta(int alimento) {
