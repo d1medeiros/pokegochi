@@ -3,21 +3,19 @@ package pokegochi.model;
 public class Ninjutsu implements Treinar{
 	
 	private String nomeTreino = "NINJUTSU";
+	private int valorAprendidoPorHora = 10; 
+	private int valorAprendido = 0; 
+	private int tempoAprendido = 1000;
 
-	public void iniciarTreino(Jogador2 jogador) {
+	public void iniciarTreino(Jogador2 jogador, int horas){
 		System.out.println("iniciando treino de -> " + this.nomeTreino);
-		try {
-			jogador.getPokegochi().setDano(6);
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("          treino de -> " + this.nomeTreino + "   -> fim do treino");
-	}
-
-	public void iniciarTreino(Jogador2 jogador, int horas) {
-		// TODO Auto-generated method stub
+		System.out.println("Treinando...    Velocidade de Ataque Antiga: " + jogador.getPokegochi().getVelocidadeAtaque());
 		
+		this.valorAprendido = this.valorAprendidoPorHora * horas;
+		jogador.getPokegochi().setVelocidadeAtaque(this.valorAprendido);
+		jogador.setAcabouTreino(true);
+		System.out.println("                Velocidade de Ataque Nova: " + jogador.getPokegochi().getVelocidadeAtaque());
+		System.out.println("          treino de -> " + this.nomeTreino + "   -> fim do treino");
 	}
 
 
